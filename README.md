@@ -128,10 +128,6 @@ flowchart LR
 
 A provider option would need a documented encrypted file format, scoped provider authorization, safe token storage, atomic writes or version checks, conflict handling, deletion propagation, and recovery when a device is offline. A GitHub or GitLab cloud repository would still store encrypted data with a third party. A user-operated GitLab instance could support actual self hosting, but that would require explicit compatibility and setup work. The current account-backed cursor and revision protocol cannot simply be assumed to work unchanged with repository files.
 
-## Implementation references
+## Cloud Sync Disclaimer
+ShellSSH encrypts synchronized records on your device, and the service is not designed to decrypt them. No security system can guarantee complete protection against compromised devices, weak recovery credentials, malicious updates, or implementation flaws. Cloud sync remains optional.
 
-- Android: `CloudSyncManager.kt`, `CloudSyncCrypto.kt`, `CloudSyncRetryWorker.kt`, `SecureSessionStore.kt`, `TermynxApiClient.kt`, and `TermynxApiModels.kt` under `app/src/main/java/com/shellssh/ai/core/`.
-- Windows (separate project): `Services/CloudSyncManager.cs`, `Services/CloudSyncCrypto.cs`, `Services/SecretProtector.cs`, `Services/DataService.cs`, `Services/AuthManager.cs`, and `Services/TermynxApiClient.cs`.
-- Existing Android integration notes: `docs/backend-api-integration.md`.
-- Backend (separate project): `TermynxSyncService.java` and `docs/termynx-backend-api.md` in the RupeeDeals repository. Its snapshot and change-feed tables are defined in `termynx_schema.cql`.
-- Public-facing data handling text in this repository: `public-site/privacy.html`.
